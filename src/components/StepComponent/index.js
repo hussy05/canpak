@@ -26,7 +26,7 @@ const StepComponent = () => {
 
     const renderSteps = () => {
         return (
-            <div className="pl-2 border-l border-dashed border-l-2 border-[#683039] flex flex-col gap-[40px]">
+            <div className="hidden pl-2 border-l border-dashed border-l-2 border-[#683039] sm:flex flex-col gap-[40px]">
                 {steps.map((step, index) => (
                     <div key={index}>
                         <div className="flex items-center justify-center w-10 h-10 rounded-full">
@@ -91,12 +91,12 @@ const StepComponent = () => {
                             }
                         }}
 
-                        className="px-10 py-2 ml-10 bg-[#683039] flex gap-5 items-center justify-center text-white text-[30px] font-semibold">
+                        className="px-5 sm:px-10 py-2 sm:ml-10 bg-[#683039] flex gap-5 items-center justify-center text-white text-[12px] sm:text-[30px] whitespace-nowrap sm:whitespace-normal font-semibold">
                         {value === 1 ? "Submit Quote for Review" : "Next"}
                         <img
                             src="/icons/nexticon.svg"
                             alt="Icon"
-                            className="ml-2 h-6 w-6"
+                            className="ml-5 h-5 w-2 sm:h-6 sm:w-6"
                         />
                     </button>
                 </div>

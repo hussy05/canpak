@@ -1,9 +1,9 @@
 export default function Modal({ handleClose, title = "Modal Title", body = <></>, closeText = "Close", saveText = "Save Changes" }) {
     return <>
         <div
-            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+            className="top-[0%] justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-[1050] outline-none focus:outline-none"
         >
-            <div className="relative w-auto my-6 mx-auto max-w-3xl">
+            <div className="relative w-auto mt-[25%]  sm:mt-0 my-10 sm:my-6 mx-auto max-w-[95vw] max-h-[95vh]">
                 {/*content*/}
                 <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                     {/*header*/}
@@ -21,7 +21,7 @@ export default function Modal({ handleClose, title = "Modal Title", body = <></>
                         </button>
                     </div>
                     {/*body*/}
-                    <div className="relative p-6 flex-auto">
+                    <div className="relative p-6 flex-auto max-h-[60vh] sm:max-h-auto overflow-y-auto">
                         {body}
                     </div>
                     {/*footer*/}

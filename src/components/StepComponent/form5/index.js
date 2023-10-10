@@ -1,4 +1,5 @@
 import Modal from '@/components/modal';
+import { formatToAmount } from '@/util/common-functions';
 import React, { useState } from 'react';
 
 const data = [
@@ -55,7 +56,7 @@ const Form5 = () => {
     const [formData, setFormData] = useState({
         content: "",
         propertyEnhancement: "",
-        equipmentBreakdown: "Select Coverage",
+        equipmentBreakdown: "",
         nonOwnedAuto: "Select Coverage",
         propertyInTransit: "",
         damageToPremisesReturned: "Select Coverage",
@@ -67,12 +68,12 @@ const Form5 = () => {
         >
             <div>
                 <p className='text-[35px] font-bold text-center'>{"Additional Insurance Coverages"}</p>
-                <div className="grid grid-cols-2 flex gap-10 mt-5">
+                <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 my-2">
                     <div className="flex-grow text-[22px] font-bold">{"What type of Insurance Coverage do you want?"}</div>
                 </div>
                 {/* <div className='mt-5 flex gap-2 flex-col'>
                     {data.map((row, rowIndex) => (
-                        <div key={rowIndex} className="grid grid-cols-2 gap-10">
+                        <div key={rowIndex} className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 my-2">
                             <div className="flex-grow text-[22px] font-bold">{row.text}</div>
                             <div className='flex gap-10 flex items-center justify-start'>
                                 <select
@@ -96,72 +97,80 @@ const Form5 = () => {
                 {/* New fields to open modal selection */}
                 {/* Contents Field */}
                 <div className='mt-5 flex gap-2 flex-col'>
-                    <div className="grid grid-cols-2 gap-10">
+                    <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 my-2">
                         <div className="flex-grow text-[22px] ">Contents:</div>
                         <div className='flex gap-10 flex items-center justify-start'>
                             <div className='flex items-center justify-space-between form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal'>
-                                <p className='w-[95%] text-accents-500 accent-[#683039] text-[18px] font-normal'>{formData.content ? formData.content : "Select Coverage"}</p>
-                                <div className={`w-[20px] h-[20px] cursor-pointer ${formData.content !=="" ? 'bg-red-950':'border'}`} onClick={() => setOpenContentsModal(true)} />
+                                <p className='w-[95%] text-accents-500 accent-[#683039] text-[18px] font-normal'>{formData.content ? "$" + formData.content : "Select Coverage"}</p>
+                                <div className={`w-[20px] h-[20px] cursor-pointer ${formData.content !== "" ? 'bg-red-950' : 'border'}`} onClick={() => setOpenContentsModal(true)} />
                             </div>
                         </div>
                     </div>
                 </div>
                 {/* Commercial Property Field */}
                 <div className='mt-5 flex gap-2 flex-col'>
-                    <div className="grid grid-cols-2 gap-10">
+                    <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 my-2">
                         <div className="flex-grow text-[22px] ">Property Enhancement:</div>
                         <div className='flex gap-10 flex items-center justify-start'>
                             <div className='flex items-center justify-space-between form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal'>
                                 <p className='w-[95%] text-accents-500 accent-[#683039] text-[18px] font-normal'>{formData.propertyEnhancement ? formData.propertyEnhancement : "Select Coverage"}</p>
-                                <div className={`w-[20px] h-[20px] cursor-pointer ${formData.propertyEnhancement !=="" ? 'bg-red-950':'border'}`} onClick={() => setOpenPropertyEnhancementModal(true)} />
+                                <div className={`w-[20px] h-[20px] cursor-pointer ${formData.propertyEnhancement !== "" ? 'bg-red-950' : 'border'}`} onClick={() => {
+                                    // setOpenPropertyEnhancementModal(true)
+                                    if (!formData.propertyEnhancement) setFormData({ ...formData, propertyEnhancement: "Included" })
+                                    else setFormData({ ...formData, propertyEnhancement: "" })
+                                }} />
                             </div>
                         </div>
                     </div>
                 </div>
                 {/* Product Liability Field */}
                 <div className='mt-5 flex gap-2 flex-col'>
-                    <div className="grid grid-cols-2 gap-10">
+                    <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 my-2">
                         <div className="flex-grow text-[22px] ">Equipment Breakdown:</div>
                         <div className='flex gap-10 flex items-center justify-start'>
                             <div className='flex items-center justify-space-between form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal'>
-                                <p className='w-[95%] text-accents-500 accent-[#683039] text-[18px] font-normal'>{formData.equipmentBreakdown}</p>
-                                <div className={`w-[20px] h-[20px] cursor-pointer ${formData.equipmentBreakdown !=="Select Coverage" ? 'bg-red-950':'border'}`} onClick={() => setOpenEquipmentBreakdownModal(true)} />
+                                <p className='w-[95%] text-accents-500 accent-[#683039] text-[18px] font-normal'>{formData.equipmentBreakdown ? formData.equipmentBreakdown : "Select Coverage"}</p>
+                                <div className={`w-[20px] h-[20px] cursor-pointer ${formData.equipmentBreakdown !== "" ? 'bg-red-950' : 'border'}`} onClick={() => {
+                                    // setOpenEquipmentBreakdownModal(true)
+                                    if (!formData.equipmentBreakdown) setFormData({ ...formData, equipmentBreakdown: "Included" })
+                                    else setFormData({ ...formData, equipmentBreakdown: "" })
+                                }} />
                             </div>
                         </div>
                     </div>
                 </div>
                 {/* Cyber Liability Field */}
                 <div className='mt-5 flex gap-2 flex-col'>
-                    <div className="grid grid-cols-2 gap-10">
+                    <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 my-2">
                         <div className="flex-grow text-[22px] ">Hired/Non-Owned Auto:</div>
                         <div className='flex gap-10 flex items-center justify-start'>
                             <div className='flex items-center justify-space-between form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal'>
                                 <p className='w-[95%] text-accents-500 accent-[#683039] text-[18px] font-normal'>{formData.nonOwnedAuto}</p>
-                                <div className={`w-[20px] h-[20px] cursor-pointer ${formData.nonOwnedAuto !=="Select Coverage" ? 'bg-red-950':'border'}`} onClick={() => setOpenNonOwnedAutoModal(true)} />
+                                <div className={`w-[20px] h-[20px] cursor-pointer ${formData.nonOwnedAuto !== "Select Coverage" ? 'bg-red-950' : 'border'}`} onClick={() => setOpenNonOwnedAutoModal(true)} />
                             </div>
                         </div>
                     </div>
                 </div>
                 {/* Property in transit Field */}
                 <div className='mt-5 flex gap-2 flex-col'>
-                    <div className="grid grid-cols-2 gap-10">
+                    <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 my-2">
                         <div className="flex-grow text-[22px] ">Property in Transit:</div>
                         <div className='flex gap-10 flex items-center justify-start'>
                             <div className='flex items-center justify-space-between form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal'>
-                                <p className='w-[95%] text-accents-500 accent-[#683039] text-[18px] font-normal'>{formData.propertyInTransit ? formData.propertyInTransit : "Select Coverage"}</p>
-                                <div className={`w-[20px] h-[20px] cursor-pointer ${formData.propertyInTransit !=="" ? 'bg-red-950':'border'}`} onClick={() => setOpenPropertyInTRansitModal(true)} />
+                                <p className='w-[95%] text-accents-500 accent-[#683039] text-[18px] font-normal'>{formData.propertyInTransit ? "$" + formData.propertyInTransit : "Select Coverage"}</p>
+                                <div className={`w-[20px] h-[20px] cursor-pointer ${formData.propertyInTransit !== "" ? 'bg-red-950' : 'border'}`} onClick={() => setOpenPropertyInTRansitModal(true)} />
                             </div>
                         </div>
                     </div>
                 </div>
                 {/* Damage to premisies rented to you Field */}
                 <div className='mt-5 flex gap-2 flex-col'>
-                    <div className="grid grid-cols-2 gap-10">
+                    <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 my-2">
                         <div className="flex-grow text-[22px] ">Damage to premises Retned to You($100,000 included in Base):</div>
                         <div className='flex gap-10 flex items-center justify-start'>
                             <div className='flex items-center justify-space-between form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal'>
                                 <p className='w-[95%] text-accents-500 accent-[#683039] text-[18px] font-normal'>{formData.damageToPremisesReturned}</p>
-                                <div className={`w-[20px] h-[20px] cursor-pointer ${formData.damageToPremisesReturned !=="Select Coverage" ? 'bg-red-950':'border'}`} onClick={() => setOpenDamageToPremisesReturnedModal(true)} />
+                                <div className={`w-[20px] h-[20px] cursor-pointer ${formData.damageToPremisesReturned !== "Select Coverage" ? 'bg-red-950' : 'border'}`} onClick={() => setOpenDamageToPremisesReturnedModal(true)} />
                             </div>
                         </div>
                     </div>
@@ -178,14 +187,14 @@ const Form5 = () => {
                 body={<>
                     <div className="flex-grow text-[22px] font-bold m-[20px auto]">{"What type of insurance coverage do you want?"}</div>
 
-                    <div className="grid grid-cols-2 gap-10">
+                    <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 my-2">
                         <div className="flex-grow text-[22px]">Contents:</div>
                         <div className='flex gap-10 flex items-center justify-start'>
                             <input
                                 type='text'
                                 className={`form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
-                                value={formData.content}
-                                onChange={(e) => setFormData({ ...formData, content: e.target.value })}
+                                value={formData.content ? "$" + formatToAmount(formData.content) : ""}
+                                onChange={(e) => setFormData({ ...formData, content: `${e.target.value}`.replace('$', "") })}
                                 placeholder='$0'
                             />
                         </div>
@@ -201,31 +210,39 @@ const Form5 = () => {
                 body={<>
                     <div className="flex-grow text-[22px] font-bold m-[20px auto]">{"What type of insurance coverage do you want?"}</div>
 
-                    <div className="grid grid-cols-2 gap-10">
+                    <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 my-2">
                         <div className="flex-grow text-[22px]">Propert Enhancements:</div>
                         <div className='flex gap-10 flex items-center justify-start'>
-                            <select
+                            <input
+                                type='text'
                                 className={`form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
-                                value={formData.nonOwnedAuto}
-                                onChange={(e) => setFormData({ ...formData, nonOwnedAuto: e.target.value })}
-                                placeholder='Non-Owned Only'
-                            >
-                                {
-                                    [<option value={"Select Coverage"} key={"default-option-0"} disabled>{"Select"}</option>,...['included']?.map((value, i) => {
-                                        return (
-                                            <option key={i} value={value}>{value}</option>
-                                        )
-                                    })]
-                                }
+                                value={formData.propertyEnhancement}
+                                onChange={(e) => setFormData({ ...formData, propertyEnhancement: e.target.value })}
+                                placeholder='Included'
+                            />
+                        </div>
+                    </div>
+                </>}
+            /> : null}
+            {/* Equipment Breakdown Modal */}
+            {openEquipmentBreakdownModal ? <Modal
+                handleClose={() => setOpenEquipmentBreakdownModal(false)}
+                title='Adittional Insurance coverages'
+                closeText='Cancel'
+                saveText='Continue'
+                body={<>
+                    <div className="flex-grow text-[22px] font-bold m-[20px auto]">{"What type of insurance coverage do you want?"}</div>
 
-                            </select>
-                            {/*<input*/}
-                            {/*    type='text'*/}
-                            {/*    className={`form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}*/}
-                            {/*    value={formData.propertyEnhancement}*/}
-                            {/*    onChange={(e) => setFormData({ ...formData, propertyEnhancement: e.target.value })}*/}
-                            {/*    placeholder='Included'*/}
-                            {/*/>*/}
+                    <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 my-2">
+                        <div className="flex-grow text-[22px]">Equipment Breakdown:</div>
+                        <div className='flex gap-10 flex items-center justify-start'>
+                            <input
+                                type='text'
+                                className={`form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
+                                value={formData.equipmentBreakdown}
+                                onChange={(e) => setFormData({ ...formData, equipmentBreakdown: e.target.value })}
+                                placeholder='Included'
+                            />
                         </div>
                     </div>
                 </>}
@@ -239,7 +256,7 @@ const Form5 = () => {
                 body={<>
                     <div className="flex-grow text-[22px] font-bold m-[20px auto]">{"What type of insurance coverage do you want?"}</div>
 
-                    <div className="grid grid-cols-2 gap-10">
+                    <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 my-2">
                         <div className="flex-grow text-[22px]">Hired/Non-Owned Auto:</div>
                         <div className='flex gap-10 flex items-center justify-start'>
                             <select
@@ -249,7 +266,7 @@ const Form5 = () => {
                                 placeholder='Non-Owned Only'
                             >
                                 {
-                                    [<option value={"Select Coverage"} key={"default-option-0"} disabled>{"Select"}</option>,...['Non-Owned Only', 'Hired & Non-Owned']?.map((value, i) => {
+                                    [<option value={"Select Coverage"} key={"default-option-0"} disabled>{"Select"}</option>, ...['Non-Owned Only', 'Hired & Non-Owned']?.map((value, i) => {
                                         return (
                                             <option key={i} value={value}>{value}</option>
                                         )
@@ -270,14 +287,14 @@ const Form5 = () => {
                 body={<>
                     <div className="flex-grow text-[22px] font-bold m-[20px auto]">{"What type of insurance coverage do you want?"}</div>
 
-                    <div className="grid grid-cols-2 gap-10">
+                    <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 my-2">
                         <div className="flex-grow text-[22px]">Property in Transit:</div>
                         <div className='flex gap-10 flex items-center justify-start'>
                             <input
                                 type='text'
                                 className={`form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
-                                value={formData.propertyInTransit}
-                                onChange={(e) => setFormData({ ...formData, propertyInTransit: e.target.value })}
+                                value={formData.propertyInTransit ? "$" + formatToAmount(formData.propertyInTransit) : ""}
+                                onChange={(e) => setFormData({ ...formData, propertyInTransit: `${e.target.value}`.replace('$', "") })}
                                 placeholder='$0'
                             />
                         </div>
@@ -293,7 +310,7 @@ const Form5 = () => {
                 body={<>
                     <div className="flex-grow text-[22px] font-bold m-[20px auto]">{"What type of insurance coverage do you want?"}</div>
 
-                    <div className="grid grid-cols-2 gap-10">
+                    <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 my-2">
                         <div className="flex-grow text-[22px]">Damage to premises Retned to You($100,000 included in Base):</div>
                         <div className='flex gap-10 flex items-center justify-start'>
                             <select
@@ -303,7 +320,7 @@ const Form5 = () => {
                                 placeholder='$300,000'
                             >
                                 {
-                                    [<option value={"Select Coverage"} key={"default-option-0"} disabled>{"Select"}</option>,...['$300,000', '$500,000']?.map((value, i) => {
+                                    [<option value={"Select Coverage"} key={"default-option-0"} disabled>{"Select"}</option>, ...['$300,000', '$500,000']?.map((value, i) => {
                                         return (
                                             <option key={i} value={value}>{value}</option>
                                         )

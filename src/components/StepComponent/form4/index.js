@@ -1,4 +1,5 @@
 import Modal from '@/components/modal';
+import { formatToAmount } from '@/util/common-functions';
 import React, { useState } from 'react';
 
 const data = [
@@ -55,7 +56,7 @@ const Form4 = () => {
         >
             <div>
                 <p className='text-[35px] font-bold text-center'>{"Policy Details"}</p>
-                <div className="grid grid-cols-2 gap-10 mt-5">
+                <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 my-2">
                     <div className="flex-grow text-[22px]">{"How is the business registered?"}</div>
                     <div className='flex gap-10 flex items-center justify-start'>
                         <input
@@ -65,13 +66,13 @@ const Form4 = () => {
                         />
                     </div>
                 </div>
-                <div className="grid grid-cols-2 flex gap-10 mt-2">
+                <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 my-2">
                     <div className="flex-grow text-[22px]">{"What type of Insurance Coverage do you want?"}</div>
                 </div>
                 <div>
                     {/* <p className='text-[35px] font-bold text-center'>{"Policy Details"}</p>
 
-                <div className="grid grid-cols-2 gap-10 mt-2">
+                <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 my-2 mt-2">
                 <div className="flex-grow text-[22px] font-bold">{"How is the business registered?"}</div>
                     <div className="flex-grow text-[22px] font-bold">{"How is the business registered?"}</div>
                     <div className='flex gap-10 flex items-center justify-start'>
@@ -87,7 +88,7 @@ const Form4 = () => {
                 </div>
                 <div className='mt-5 flex gap-2 flex-col'>
                     {data.map((row, rowIndex) => (
-                        <div key={rowIndex} className="grid grid-cols-2 gap-10">
+                        <div key={rowIndex} className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 my-2">
                             <div className="flex-grow text-[22px] font-bold">{row.text}</div>
                             <div className='flex gap-10 flex items-center justify-start'>
                                 <select
@@ -111,7 +112,7 @@ const Form4 = () => {
                     {/* New fields to open modal selection */}
                     {/* General Liability Field */}
                     <div className='mt-5 flex gap-2 flex-col'>
-                        <div className="grid grid-cols-2 gap-10">
+                        <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 my-2">
                             <div className="flex-grow text-[22px] ">General Liability:</div>
                             <div className='flex gap-10 flex items-center justify-start'>
                                 <div className='flex items-center justify-space-between form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal'>
@@ -123,11 +124,11 @@ const Form4 = () => {
                     </div>
                     {/* Commercial Property Field */}
                     <div className='mt-5 flex gap-2 flex-col'>
-                        <div className="grid grid-cols-2 gap-10">
+                        <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 my-2">
                             <div className="flex-grow text-[22px] ">Commercial Property:</div>
                             <div className='flex gap-10 flex items-center justify-start'>
                                 <div className='flex items-center justify-space-between form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal'>
-                                    <p className='w-[95%] text-accents-500 accent-[#683039] text-[18px] font-normal'>{Object.keys(formData.commercialLiability).length === 8 ? "Included" : "Select Coverage"}</p>
+                                    <p className='w-[95%] text-accents-500 accent-[#683039] text-[18px] font-normal'>{Object.keys(formData.commercialLiability).length === 8 ? "$"+formData.commercialLiability?.buildingValue : "Select Coverage"}</p>
                                     <div className={`w-[20px] h-[20px] cursor-pointer ${Object.keys(formData.commercialLiability).length === 8 ? 'bg-red-950' : 'border'}`} onClick={() => setOpenCommercialLiabilityModal(true)} />
                                 </div>
                             </div>
@@ -135,7 +136,7 @@ const Form4 = () => {
                     </div>
                     {/* Product Liability Field */}
                     <div className='mt-5 flex gap-2 flex-col'>
-                        <div className="grid grid-cols-2 gap-10">
+                        <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 my-2">
                             <div className="flex-grow text-[22px] ">Product Liability:</div>
                             <div className='flex gap-10 flex items-center justify-start'>
                                 <div className='flex items-center justify-space-between form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal'>
@@ -147,7 +148,7 @@ const Form4 = () => {
                     </div>
                     {/* Cyber Liability Field */}
                     <div className='mt-5 flex gap-2 flex-col'>
-                        <div className="grid grid-cols-2 gap-10">
+                        <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 my-2">
                             <div className="flex-grow text-[22px] ">Cyber Liability:</div>
                             <div className='flex gap-10 flex items-center justify-start'>
                                 <div className='flex items-center justify-space-between form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal'>
@@ -158,9 +159,9 @@ const Form4 = () => {
                         </div>
                     </div>
                     {/* End of new fields */}
-                    <div className="grid grid-cols-2 flex gap-10 mt-2">
+                    <div className="grid grid-cols-2 flex gap-20 sm:gap-10 mt-2">
                         <div className="flex-grow text-[22px] ">{"TRIA Coverage:"}</div>
-                        <div className='flex gap-10 flex items-center justify-start ml-8'>
+                        <div className='flex gap-1 sm:gap-10 flex items-center justify-start sm:ml-8'>
                             <label className="inline-flex items-center">
                                 <input
                                     type="radio"
@@ -198,7 +199,7 @@ const Form4 = () => {
                 body={<>
                     <div className="flex-grow text-[22px] font-bold m-[20px auto]">{"What type of insurance coverage do you want?"}</div>
 
-                    <div className="grid grid-cols-2 gap-10">
+                    <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 my-2">
                         <div className="flex-grow text-[22px]">General Liability</div>
                         <div className='flex gap-10 flex items-center justify-start'>
                             <select
@@ -228,7 +229,7 @@ const Form4 = () => {
                 closeText='Cancel'
                 saveText='Continue'
                 body={<>
-                    <div className="flex items-center justify-between gap-20">
+                    <div className="flex flex-col sm:flex-row items-center sm:justify-between gap-20 overflow-y-auto h-[60vh] sm:h-auto">
                         <div className='col-1 grid grid-cols-2 gap-5 m-[auto 250px]'>
                             <div className="flex-grow text-[22px]">Cause of Loss:</div>
                             <div className='flex gap-10 flex items-center justify-start'>
@@ -363,8 +364,8 @@ const Form4 = () => {
                                 <input
                                     type='text'
                                     className={`form-select-gray border-gray-300 border p-3 w-full h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
-                                    value={formData.commercialLiability?.buildingValue}
-                                    onChange={(e) => setFormData({ ...formData, commercialLiability: { ...formData.commercialLiability, buildingValue: e.target.value } })}
+                                    value={formData.commercialLiability?.buildingValue?"$"+formatToAmount(formData.commercialLiability?.buildingValue):""}
+                                    onChange={(e) => setFormData({ ...formData, commercialLiability: { ...formData.commercialLiability, buildingValue: `${e.target.value}`.replace("$",'') } })}
                                     placeholder='$0'
                                 />
                             </div>
@@ -382,7 +383,7 @@ const Form4 = () => {
                 body={<>
                     <div className="flex-grow text-[22px] font-bold m-[20px auto]">{"What type of insurance coverage do you want?"}</div>
 
-                    <div className="grid grid-cols-2 gap-10">
+                    <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 my-2">
                         <div className="flex-grow text-[22px]">Product Liability</div>
                         <div className='flex gap-10 flex items-center justify-start'>
                             <select
@@ -414,7 +415,7 @@ const Form4 = () => {
                 body={<>
                     <div className="flex-grow text-[22px] font-bold m-[20px auto]">{"What type of insurance coverage do you want?"}</div>
 
-                    <div className="grid grid-cols-2 gap-10">
+                    <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 my-2">
                         <div className="flex-grow text-[22px]">Cyber Liability</div>
                         <div className='flex gap-10 flex items-center justify-start'>
                             <select

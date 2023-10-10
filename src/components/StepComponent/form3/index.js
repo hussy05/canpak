@@ -1,4 +1,5 @@
 import Modal from '@/components/modal';
+import { formatToAmount } from '@/util/common-functions';
 import React, { useEffect, useState } from 'react';
 
 const data = [
@@ -84,7 +85,7 @@ const Form3 = () => {
             <div>
                 <p className='text-[35px] font-bold text-center'>{"Your Business Details"}</p>
                 <div className='mt-5 flex gap-2 flex-col'>
-                    <div className="grid grid-cols-2 gap-10 my-2">
+                    <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 my-2">
                         <div className="flex-grow text-[22px]">What type of Cannabis Business do you operate?</div>
                         <div className='flex gap-10 flex items-center justify-center'>
                             <select
@@ -104,32 +105,32 @@ const Form3 = () => {
                             </select>
                         </div>
                     </div>
-                    <div className="grid grid-cols-2 gap-10 my-2">
+                    <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 my-2">
                         <div className="flex-grow text-[22px]">Estimated Sales in the next 12 Months?</div>
                         <div className='flex gap-10 flex items-center justify-center'>
                             <input
                                 type='text'
                                 className={`appearance-none form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
-                                value={formData.estimatedSales}
-                                onChange={(e) => setFormData({ ...formData, estimatedSales: e.target.value })}
+                                value={formData.estimatedSales?"$"+formatToAmount(formData.estimatedSales):""}
+                                onChange={(e) => setFormData({ ...formData, estimatedSales: `${e.target.value}`.replace('$',"") })}
                                 placeholder='$0'
                             />
                         </div>
                     </div>
-                    <div className="grid grid-cols-2 gap-10 my-2">
+                    <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 my-2">
                         <div className="flex-grow text-[22px]">Current Year Sales?</div>
                         <div className='flex gap-10 flex items-center justify-center'>
                             <input
                                 type='text'
                                 className={`appearance-none form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
-                                value={formData.currentSales}
-                                onChange={(e) => setFormData({ ...formData, currentSales: e.target.value })}
+                                value={formData.currentSales?"$"+formatToAmount(formData.currentSales):""}
+                                onChange={(e) => setFormData({ ...formData, currentSales: `${e.target.value}`.replace('$',"") })}
                                 placeholder='$0'
                             />
                         </div>
                     </div>
                     {data.map((row, rowIndex) => (
-                        <div key={rowIndex} className="grid grid-cols-2 gap-10">
+                        <div key={rowIndex} className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 my-2">
                             <div className="flex-grow text-[22px]">{row.text}</div>
                             <div className='flex gap-10 flex items-center justify-center'>
                                 <select
@@ -151,7 +152,7 @@ const Form3 = () => {
                     ))}
                 </div>
                 <div>
-                <div className="grid grid-cols-2 gap-10 mt-2">
+                <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 mt-2">
                         <div className="flex-grow text-[22px]">{"THC, CBD or Hemp?"}</div>
                         <div className='flex gap-10 flex items-center justify-center'>
                             <select
@@ -166,7 +167,7 @@ const Form3 = () => {
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-2 flex gap-10 mt-2">
+                    <div className="grid grid-row-2 sm:grid-cols-2 flex gap-2 sm:gap-10 mt-2">
                         <div className="flex-grow text-[22px]">{"Do You Own or Rent?"}</div>
                         <div className='flex gap-10 flex items-center justify-center'>
                             <label className="inline-flex items-center">
@@ -194,7 +195,7 @@ const Form3 = () => {
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-10 mt-2">
+                    <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 mt-2">
                         <div className="flex-grow text-[22px]">{"How is the business registered?"}</div>
                         <div className='flex gap-10 flex items-center justify-center'>
                             <select
@@ -213,7 +214,7 @@ const Form3 = () => {
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-2 flex gap-10 mt-2">
+                    <div className="grid grid-row-2 sm:grid-cols-2 flex gap-2 sm:gap-10 mt-2">
                         <div className="flex-grow text-[22px]">{"Does the business have a website?"}</div>
                         <div className='flex gap-10 flex items-center justify-center'>
                             <label className="inline-flex items-center">
@@ -243,7 +244,7 @@ const Form3 = () => {
                             </label>
                         </div>
                     </div>
-                    {formData.website === "yes" && <div className="grid grid-cols-2 gap-10 my-2">
+                    {formData.website === "yes" && <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 my-2">
                         <div className="flex-grow text-[22px]">Website URL:</div>
                         <div className='flex gap-10 flex items-center justify-center'>
                             <input
@@ -256,7 +257,7 @@ const Form3 = () => {
                         </div>
                     </div>}
 
-                    <div className="grid grid-cols-2 flex gap-10 mt-2">
+                    <div className="grid grid-row-2 sm:grid-cols-2 flex gap-2 sm:gap-10 mt-2">
                         <div className="flex-grow text-[22px]">{"Do you have a valid license from the state(s) you do business in?"}</div>
                         <div className='flex gap-10 flex items-center justify-center'>
                             <label className="inline-flex items-center">
@@ -285,7 +286,7 @@ const Form3 = () => {
                             </label>
                         </div>
                     </div>
-                    {formData.license === "yes" && <div className="grid grid-cols-2 gap-10 my-2">
+                    {formData.license === "yes" && <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 my-2">
                         <div className="flex-grow text-[22px]">Licenses#:</div>
                         <div className='flex gap-10 flex items-center justify-center'>
                             <input

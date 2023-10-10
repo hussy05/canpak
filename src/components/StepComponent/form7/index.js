@@ -13,7 +13,7 @@ const Form7 = () => {
             <div>
                 <p className='text-[35px] font-bold text-center'>{"Additional Insured"}</p>
                 <div className='mt-5 flex gap-2 flex-col'>
-                    <div className="grid grid-cols-2 gap-10">
+                    <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 my-2">
                         <div className="flex-grow text-[22px] font-bold">Processors/Manufacturer:</div>
                         <div className='flex gap-10 flex items-center justify-start'>
                             <select

@@ -1,3 +1,4 @@
+import { formatToAmount } from '@/util/common-functions';
 import React, { useState } from 'react';
 
 
@@ -57,9 +58,9 @@ const Form2 = () => {
                 <p className='text-[35px] font-bold text-center'>{"Your Property Details"}</p>
                 <div className='mt-5'>
                     {rowData.map((row, rowIndex) => (
-                        <div key={rowIndex} className="grid grid-cols-2 flex gap-10">
-                            <div className="flex-grow text-[22px]">{row.text}</div>
-                            <div className='flex gap-10 flex items-center justify-center'>
+                        <div key={rowIndex} className="sm:grid grid-cols-2 flex flex-col sm:flex-row gap-2 sm:gap-10 my-[25px] sm:my-auto">
+                            <div className="w-full sm:w-auto sm:flex-grow sm:text-[22px]">{row.text}</div>
+                            <div className='flex gap-5 sm:gap-10 flex items-center justify-center'>
                                 <label className="inline-flex items-center">
                                     <input
                                         type="radio"
@@ -88,8 +89,8 @@ const Form2 = () => {
                 </div>
                 <div className='mt-2'>
                     {data.map((row, rowIndex) => (
-                        <div key={rowIndex} className="grid grid-cols-2 gap-10">
-                            <div className="flex-grow text-[22px]">{row.text}</div>
+                        <div key={rowIndex} className="flex flex-col sm:grid grid-cols-2 sm:gap-10 my-[25px] sm:my-auto">
+                            <div className="w-full sm:w-auto flex-grow sm:text-[22px]">{row.text}</div>
                             <div className='flex gap-10 flex items-center justify-center'>
                                 <select
                                     className=" form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal"
@@ -108,26 +109,26 @@ const Form2 = () => {
                             </div>
                         </div>
                     ))}
-                    <div className="grid grid-cols-2 gap-10 my-2">
-                        <div className="flex-grow text-[22px]">Year Built of the Building:</div>
+                    <div className="flex flex-col sm:grid grid-cols-2 sm:gap-10 my-2">
+                        <div className="w-full sm:w-auto sm:flex-grow sm:text-[22px] ">Year Built of the Building:</div>
                         <div className='flex gap-10 flex items-center justify-center'>
                             <input
                                 type='text'
-                                className={`appearance-none form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
-                                value={selectedValue[5]}
-                                onChange={(e) => handleValueChange( 5,e.target.value )}
+                                className={`appearance-none form-select-gray border-gray-300 border p-3 w-full sm:w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
+                                value={selectedValue[5]?"$"+formatToAmount(selectedValue[5]):""}
+                                onChange={(e) => handleValueChange( 5,`${e.target.value}`.replace("$","") )}
                                 placeholder='$0'
                             />
                         </div>
                     </div>
-                    <div className="grid grid-cols-2 gap-10">
-                        <div className="flex-grow text-[22px]">Total Square Feet of the Building:</div>
+                    <div className="flex flex-col sm:grid grid-cols-2 sm:gap-10 my-2">
+                        <div className="w-full sm:w-auto sm:flex-grow sm:text-[22px] ">Total Square Feet of the Building:</div>
                         <div className='flex gap-10 flex items-center justify-center'>
                             <input
                                 type='text'
-                                className={`appearance-none form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
-                                value={selectedValue[6]}
-                                onChange={(e) => handleValueChange( 6,e.target.value )}
+                                className={`appearance-none form-select-gray border-gray-300 border p-3 w-full sm:w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
+                                value={selectedValue[6]?"$"+formatToAmount(selectedValue[6]):""}
+                                onChange={(e) => handleValueChange( 6,`${e.target.value}`.replace("$","") )}
                                 placeholder='$0'
                             />
                         </div>
