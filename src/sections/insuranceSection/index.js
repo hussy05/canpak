@@ -40,7 +40,7 @@ const InsuranceSection = () => {
             {"CANNABIS INSURANCE"}
           </p>
 
-          <p className="text-white font-rubik font-semibold text-[30px] leading-150">{'Reefer Protector offers customized commercial insurance plans for:'}</p>
+          <p className="text-white font-rubik font-semibold text-[30px] leading-150">{'Offers customized commercial insurance plans for:'}</p>
         </div>
         <div className="mt-10 md:mt-0 flex flex-col justify-start items-start gap-[20px] mx-[30px] md:mx-[0px] p-4">
           {

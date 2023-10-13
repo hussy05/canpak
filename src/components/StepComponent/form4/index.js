@@ -1,6 +1,7 @@
 import Modal from '@/components/modal';
+import { QuouteFormData } from '@/contexts/quoute-form-data.context';
 import { formatToAmount } from '@/util/common-functions';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 const data = [
     {
@@ -30,12 +31,15 @@ const Form4 = () => {
     const [openProductLiabilityModal, setOpenProductLiabilityModal] = useState(false);
     const [openCyberLiabilityModal, setOpenCyberLiabilityModal] = useState(false);
 
+    const {building,setBuilding} = useContext(QuouteFormData);
+
     const [formData, setFormData] = useState({
         generalLiability: "Select Coverage",
         commercialLiability: {},
         productLiability: "Select Coverage",
         cyberLiability: "Select Coverage",
     })
+
 
     const handleValueChange = (rowIndex, option) => {
         setSelectedValue((prevOptions) => ({
@@ -365,7 +369,10 @@ const Form4 = () => {
                                     type='text'
                                     className={`form-select-gray border-gray-300 border p-3 w-full h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
                                     value={formData.commercialLiability?.buildingValue?"$"+formatToAmount(formData.commercialLiability?.buildingValue):""}
-                                    onChange={(e) => setFormData({ ...formData, commercialLiability: { ...formData.commercialLiability, buildingValue: `${e.target.value}`.replace("$",'') } })}
+                                    onChange={(e) => {
+                                        setFormData({ ...formData, commercialLiability: { ...formData.commercialLiability, buildingValue: `${e.target.value}`.replace("$",'')} });
+                                        setBuilding(`${e.target.value}`.replace("$",''));
+                                    }}
                                     placeholder='$0'
                                 />
                             </div>

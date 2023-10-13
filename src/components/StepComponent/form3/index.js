@@ -17,7 +17,7 @@ const data = [
     // },
     {
         text: 'Years in Operation',
-        options: ['Select','Less than 1', '1 Year', "2 Years", "3 Years", "4 Years","More than 5"]
+        options: ['Select', 'Less than 1', '1 Year', "2 Years", "3 Years", "4 Years", "More than 5"]
     },
 ];
 const Form3 = () => {
@@ -41,6 +41,8 @@ const Form3 = () => {
         webLink: "",
         license: "no",
         licenseNo: "",
+        thcCbd: "",
+        businessReistration: ""
     })
 
     useEffect(() => {
@@ -90,12 +92,12 @@ const Form3 = () => {
                         <div className='flex gap-10 flex items-center justify-center'>
                             <select
                                 className={`form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
-                                value={formData.businessDetail}
+                                value={formData.businessSubDetail}
                                 onChange={(e) => setFormData({ ...formData, businessDetail: e.target.value })}
                                 placeholder='Cultivators/ Growers'
                             >
                                 {
-                                   [<option value={""} key={"default-option-0"} disabled>{"Select"}</option>,... ["Retailers & Dispensaries", "Cultivators/ Growers", "Processors/ Manufacturers", "Distributers & Transporters", "Tobacco & Head Shops"]?.map((value, i) => {
+                                    [<option value={""} key={"default-option-0"} disabled>{"Select"}</option>, ...["Retailers & Dispensaries", "Cultivators/ Growers", "Processors/ Manufacturers", "Distributers & Transporters", "Tobacco & Head Shops"]?.map((value, i) => {
                                         return (
                                             <option key={i} value={value}>{value}</option>
                                         )
@@ -111,8 +113,8 @@ const Form3 = () => {
                             <input
                                 type='text'
                                 className={`appearance-none form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
-                                value={formData.estimatedSales?"$"+formatToAmount(formData.estimatedSales):""}
-                                onChange={(e) => setFormData({ ...formData, estimatedSales: `${e.target.value}`.replace('$',"") })}
+                                value={formData.estimatedSales ? "$" + formatToAmount(formData.estimatedSales) : ""}
+                                onChange={(e) => setFormData({ ...formData, estimatedSales: `${e.target.value}`.replace('$', "") })}
                                 placeholder='$0'
                             />
                         </div>
@@ -123,8 +125,8 @@ const Form3 = () => {
                             <input
                                 type='text'
                                 className={`appearance-none form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
-                                value={formData.currentSales?"$"+formatToAmount(formData.currentSales):""}
-                                onChange={(e) => setFormData({ ...formData, currentSales: `${e.target.value}`.replace('$',"") })}
+                                value={formData.currentSales ? "$" + formatToAmount(formData.currentSales) : ""}
+                                onChange={(e) => setFormData({ ...formData, currentSales: `${e.target.value}`.replace('$', "") })}
                                 placeholder='$0'
                             />
                         </div>
@@ -152,12 +154,13 @@ const Form3 = () => {
                     ))}
                 </div>
                 <div>
-                <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 mt-2">
+                    <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 mt-2">
                         <div className="flex-grow text-[22px]">{"THC, CBD or Hemp?"}</div>
                         <div className='flex gap-10 flex items-center justify-center'>
                             <select
                                 className={`form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
-                                value={""}
+                                value={formData.thcCbd}
+                                onChange={e => setFormData({ ...formData, thcCbd: e.target.value })}
                             >
                                 <option value={""} disabled>{"Select"}</option>
                                 <option value={"THC"}>{"THC"}</option>
@@ -167,7 +170,7 @@ const Form3 = () => {
                         </div>
                     </div>
 
-                    <div className="grid grid-row-2 sm:grid-cols-2 flex gap-2 sm:gap-10 mt-2">
+                    <div className="grid grid-row-2 sm:grid-cols-2 flex gap-2 sm:gap-10 mt-2 pb-[5px]">
                         <div className="flex-grow text-[22px]">{"Do You Own or Rent?"}</div>
                         <div className='flex gap-10 flex items-center justify-center'>
                             <label className="inline-flex items-center">
@@ -200,7 +203,8 @@ const Form3 = () => {
                         <div className='flex gap-10 flex items-center justify-center'>
                             <select
                                 className={`form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
-                                value={""}
+                                value={formData.businessReistration}
+                                onChange={(e) => setFormData({ ...formData, businessReistration: e.target.value })}
                             >
                                 <option value={""} disabled>{"Select"}</option>
                                 <option value={"Association"}>{"Association"}</option>
@@ -214,7 +218,7 @@ const Form3 = () => {
                         </div>
                     </div>
 
-                    <div className="grid grid-row-2 sm:grid-cols-2 flex gap-2 sm:gap-10 mt-2">
+                    <div className="grid grid-row-2 sm:grid-cols-2 flex gap-2 sm:gap-10 mt-2 pb-[5px]">
                         <div className="flex-grow text-[22px]">{"Does the business have a website?"}</div>
                         <div className='flex gap-10 flex items-center justify-center'>
                             <label className="inline-flex items-center">
@@ -226,7 +230,7 @@ const Form3 = () => {
                                     onClick={(e) => setFormData({ ...formData, website: "yes" })}
                                 />
                                 <span className="ml-2 text-black font-mulish font-semibold text-[18px]"
-                                    >
+                                >
                                     Yes
                                 </span>
                             </label>
@@ -257,7 +261,7 @@ const Form3 = () => {
                         </div>
                     </div>}
 
-                    <div className="grid grid-row-2 sm:grid-cols-2 flex gap-2 sm:gap-10 mt-2">
+                    <div className="grid grid-row-2 sm:grid-cols-2 flex gap-2 sm:gap-10 mt-2 pb-[5px]">
                         <div className="flex-grow text-[22px]">{"Do you have a valid license from the state(s) you do business in?"}</div>
                         <div className='flex gap-10 flex items-center justify-center'>
                             <label className="inline-flex items-center">

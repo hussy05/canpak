@@ -29,7 +29,7 @@ const MapSection = () => {
       >
         <div>
           <p className='text-[45px] text-extrabold text-black text-center'>{"States Where CannaPak Offers"}</p>
-          <p className='text-[45px] text-extrabold text-black text-center'>{"Insurance In"}</p>
+          <p className='text-[45px] text-extrabold text-black text-center'>{"Insurance"}</p>
         </div>
 
         <div className="flex justify-center items-center mt-5">

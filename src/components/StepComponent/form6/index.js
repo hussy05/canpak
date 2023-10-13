@@ -1,6 +1,7 @@
 import Modal from '@/components/modal';
+import { QuouteFormData } from '@/contexts/quoute-form-data.context';
 import { formatToAmount } from '@/util/common-functions';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 const Form6 = () => {
 
@@ -10,6 +11,19 @@ const Form6 = () => {
     const [openEmployeeBenifitsLiabilityModal, setOpenEmployeeBenifitsLiabilityModal] = useState(false);
     const [openAdditionalInsuredModal, setOpenAdditionalInsuredModal] = useState(false);
     const [openStopGapModal, setOpenStopGapModal] = useState(false);
+
+    const {
+        ordinanceAndLaw,
+        setOrdinanceAndLaw,
+        tenantGlass,
+        setTenantGlass,
+        businessIncome,
+        setBusinessIncome,
+        employeeBenifits,
+        setEmployeeBenifits,
+        stopGap,
+        setStopGap
+    } = useContext(QuouteFormData)
 
     const [formData, setFormData] = useState({
         ordinanceAndLaw: "",
@@ -38,8 +52,8 @@ const Form6 = () => {
                         <div className="flex-grow text-[22px] ">Ordinance & Law:</div>
                         <div className='flex gap-10 flex items-center justify-start'>
                             <div className='flex items-center justify-space-between form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal'>
-                                <p className='w-[95%] text-accents-500 accent-[#683039] text-[18px] font-normal'>{formData.ordinanceAndLaw ? formData.ordinanceAndLaw : "Select Coverage"}</p>
-                                <div className={`w-[20px] h-[20px] cursor-pointer ${formData.ordinanceAndLaw !== "" ? 'bg-red-950' : 'border'}`} onClick={() => setOpenOrdinanceAndLawModal(true)} />
+                                <p className='w-[95%] text-accents-500 accent-[#683039] text-[18px] font-normal'>{ordinanceAndLaw ? ordinanceAndLaw : "Select Coverage"}</p>
+                                <div className={`w-[20px] h-[20px] cursor-pointer ${ordinanceAndLaw !== "" ? 'bg-red-950' : 'border'}`} onClick={() => setOpenOrdinanceAndLawModal(true)} />
                             </div>
                         </div>
                     </div>
@@ -50,8 +64,8 @@ const Form6 = () => {
                         <div className="flex-grow text-[22px] ">Tenant&apos;s Glass:</div>
                         <div className='flex gap-10 flex items-center justify-start'>
                             <div className='flex items-center justify-space-between form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal'>
-                                <p className='w-[95%] text-accents-500 accent-[#683039] text-[18px] font-normal'>{formData.tenantGlass ? "$" + formData.tenantGlass : "Select Coverage"}</p>
-                                <div className={`w-[20px] h-[20px] cursor-pointer ${formData.tenantGlass !== "" ? 'bg-red-950' : 'border'}`} onClick={() => setOpenTenantGlassModal(true)} />
+                                <p className='w-[95%] text-accents-500 accent-[#683039] text-[18px] font-normal'>{tenantGlass ? "$" + tenantGlass : "Select Coverage"}</p>
+                                <div className={`w-[20px] h-[20px] cursor-pointer ${tenantGlass !== "" ? 'bg-red-950' : 'border'}`} onClick={() => setOpenTenantGlassModal(true)} />
                             </div>
                         </div>
                     </div>
@@ -62,8 +76,8 @@ const Form6 = () => {
                         <div className="flex-grow text-[22px] ">Business Income:</div>
                         <div className='flex gap-10 flex items-center justify-start'>
                             <div className='flex items-center justify-space-between form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal'>
-                                <p className='w-[95%] text-accents-500 accent-[#683039] text-[18px] font-normal'>{formData.businessIncome ? "$" + formData.businessIncome : "Select Coverage"}</p>
-                                <div className={`w-[20px] h-[20px] cursor-pointer ${formData.businessIncome !== "" ? 'bg-red-950' : 'border'}`} onClick={() => setOpenBusinessIncemModal(true)} />
+                                <p className='w-[95%] text-accents-500 accent-[#683039] text-[18px] font-normal'>{businessIncome ? "$" + businessIncome : "Select Coverage"}</p>
+                                <div className={`w-[20px] h-[20px] cursor-pointer ${businessIncome !== "" ? 'bg-red-950' : 'border'}`} onClick={() => setOpenBusinessIncemModal(true)} />
                             </div>
                         </div>
                     </div>
@@ -74,8 +88,8 @@ const Form6 = () => {
                         <div className="flex-grow text-[22px] ">Employee Benifits Liability:</div>
                         <div className='flex gap-10 flex items-center justify-start'>
                             <div className='flex items-center justify-space-between form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal'>
-                                <p className='w-[95%] text-accents-500 accent-[#683039] text-[18px] font-normal'>{formData.employeeBenifitsLiability}</p>
-                                <div className={`w-[20px] h-[20px] cursor-pointer ${formData.employeeBenifitsLiability !== "Select Coverage" ? 'bg-red-950' : 'border'}`} onClick={() => setOpenEmployeeBenifitsLiabilityModal(true)} />
+                                <p className='w-[95%] text-accents-500 accent-[#683039] text-[18px] font-normal'>{employeeBenifits?employeeBenifits:"Select Coverage"}</p>
+                                <div className={`w-[20px] h-[20px] cursor-pointer ${employeeBenifits !== "" ? 'bg-red-950' : 'border'}`} onClick={() => setOpenEmployeeBenifitsLiabilityModal(true)} />
                             </div>
                         </div>
                     </div>
@@ -85,8 +99,8 @@ const Form6 = () => {
                     <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 my-2">
                         <div className="flex-grow text-[22px] ">Aditional Insured:</div>
                         <div className='flex gap-10 flex items-center justify-start'>
-                            <div className='flex items-center justify-space-between form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal'>
-                                <p className='w-[95%] text-accents-500 accent-[#683039] text-[18px] font-normal'>{formData.additionalInsured ? formData.additionalInsured : "Select Coverage"}</p>
+                            <div className='flex items-center justify-space-between form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal overflow-y-hidden'>
+                                <p className='w-[95%] text-accents-500 accent-[#683039] text-[18px] font-normal self-start'>{formData.additionalInsured ? formData.additionalInsured : "Select Coverage"}</p>
                                 <div className={`w-[20px] h-[20px] cursor-pointer ${formData.additionalInsured !== "" ? 'bg-red-950' : 'border'}`} onClick={() => {
                                     // if (!formData.additionalInsured) setFormData({ ...formData, additionalInsured: "Included" })
                                     // else setFormData({ ...formData, additionalInsured: "" })
@@ -102,8 +116,8 @@ const Form6 = () => {
                         <div className="flex-grow text-[22px] ">Stop Gap:</div>
                         <div className='flex gap-10 flex items-center justify-start'>
                             <div className='flex items-center justify-space-between form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal'>
-                                <p className='w-[95%] text-accents-500 accent-[#683039] text-[18px] font-normal'>{formData.stopGap}</p>
-                                <div className={`w-[20px] h-[20px] cursor-pointer ${formData.stopGap !== "Select Coverage" ? 'bg-red-950' : 'border'}`} onClick={() => setOpenStopGapModal(true)} />
+                                <p className='w-[95%] text-accents-500 accent-[#683039] text-[18px] font-normal'>{stopGap?stopGap:"Select Coverage"}</p>
+                                <div className={`w-[20px] h-[20px] cursor-pointer ${stopGap !== "" ? 'bg-red-950' : 'border'}`} onClick={() => setOpenStopGapModal(true)} />
                             </div>
                         </div>
                     </div>
@@ -125,8 +139,8 @@ const Form6 = () => {
                         <div className='flex gap-10 flex items-center justify-start'>
                             <select
                                 className={`form-select-gray border-gray-300 border p-3 w-content h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
-                                value={formData.ordinanceAndLaw}
-                                onChange={(e) => setFormData({ ...formData, ordinanceAndLaw: e.target.value })}
+                                value={ordinanceAndLaw}
+                                onChange={(e) => setOrdinanceAndLaw( e.target.value )}
                                 placeholder='Coverage B Adittional Limit 0'
                             >
                                 {
@@ -157,8 +171,8 @@ const Form6 = () => {
                             <input
                                 type='text'
                                 className={`form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
-                                value={formData.tenantGlass ? "$" + formatToAmount(formData.tenantGlass) : ""}
-                                onChange={(e) => setFormData({ ...formData, tenantGlass: `${e.target.value}`.replace('$', "") })}
+                                value={tenantGlass ? "$" + formatToAmount(tenantGlass) : ""}
+                                onChange={(e) => setTenantGlass(`${e.target.value}`.replace('$', ""))}
                                 placeholder='$0'
                             />
                         </div>
@@ -180,8 +194,8 @@ const Form6 = () => {
                             <input
                                 type='text'
                                 className={`form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
-                                value={formData.businessIncome ? "$" + formatToAmount(formData.businessIncome) : ""}
-                                onChange={(e) => setFormData({ ...formData, businessIncome: `${e.target.value}`.replace('$', "") })}
+                                value={businessIncome ? "$" + formatToAmount(businessIncome) : ""}
+                                onChange={(e) => setBusinessIncome(`${e.target.value}`.replace('$', "") )}
                                 placeholder='$0'
                             />
                         </div>
@@ -242,12 +256,12 @@ const Form6 = () => {
                         <div className='flex gap-10 flex items-center justify-start'>
                             <select
                                 className={`form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
-                                value={formData.employeeBenifitsLiability}
-                                onChange={(e) => setFormData({ ...formData, employeeBenifitsLiability: e.target.value })}
+                                value={employeeBenifits}
+                                onChange={(e) => setEmployeeBenifits(e.target.value )}
                                 placeholder='$500,000'
                             >
                                 {
-                                    [<option value={"Select Coverage"} key={"default-option-0"} disabled>{"Select"}</option>, ...['$500,000', '$1,000,000']?.map((value, i) => {
+                                    [<option value={""} key={"default-option-0"} disabled>{"Select"}</option>, ...['$500,000', '$1,000,000']?.map((value, i) => {
                                         return (
                                             <option key={i} value={value}>{value}</option>
                                         )
@@ -273,12 +287,12 @@ const Form6 = () => {
                         <div className='flex gap-10 flex items-center justify-start'>
                             <select
                                 className={`form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
-                                value={formData.stopGap}
-                                onChange={(e) => setFormData({ ...formData, stopGap: e.target.value })}
+                                value={stopGap}
+                                onChange={(e) => setStopGap(e.target.value )}
                                 placeholder='$25,000/$50,000'
                             >
                                 {
-                                    [<option value={"Select Coverage"} key={"default-option-0"} disabled>{"Select"}</option>, ...['$25,000/$50,000', '$50,000/$100,000', '$100,000/$150,000', '$150,000/$200,000']?.map((value, i) => {
+                                    [<option value={""} key={"default-option-0"} disabled>{"Select"}</option>, ...['$25,000/$50,000', '$50,000/$100,000', '$100,000/$150,000', '$150,000/$200,000']?.map((value, i) => {
                                         return (
                                             <option key={i} value={value}>{value}</option>
                                         )
@@ -309,7 +323,7 @@ const Form6 = () => {
                                 placeholder='Additional Insured Povision (Scheduled Primary And Non-Contributory)'
                             >
                                 {
-                                    ['Additional Insured Povision (Scheduled Primary And Non-Contributory)',
+                                    [<option value={""} key={"default-option-0"} disabled>{"Select"}</option>,['Additional Insured Povision (Scheduled Primary And Non-Contributory)',
                                         'Primary And Noncontributory- Other Insurance Condition (CG2010 Also Required)',
                                         'Additional Insured-Concessionaires trading under your name',
                                         'Additional Insured-Controlling Interest',
@@ -330,7 +344,7 @@ const Form6 = () => {
                                         return (
                                             <option key={i} value={value}>{value}</option>
                                         )
-                                    })
+                                    })]
                                 }
 
                             </select>

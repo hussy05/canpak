@@ -1,6 +1,7 @@
 import Modal from '@/components/modal';
+import { QuouteFormData } from '@/contexts/quoute-form-data.context';
 import { formatToAmount } from '@/util/common-functions';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 const data = [
     {
@@ -32,6 +33,18 @@ const Form5 = () => {
 
     const [selectedOptions, setSelectedOptions] = useState({});
     const [selectedValue, setSelectedValue] = useState({});
+    const {
+        contents,
+        setContents,
+        propertyEnhancement,
+        setPropertyEnhancement,
+        equipmentBreakdown,
+        setEquipmentBreakdown,
+        nonOwnedAuto,
+        setNonOwnedAuto,
+        damageToRentedProperty,
+        setDamageToRentedProperty
+    } = useContext(QuouteFormData)
 
     const handleValueChange = (rowIndex, option) => {
         setSelectedValue((prevOptions) => ({
@@ -54,12 +67,12 @@ const Form5 = () => {
     const [openDamageToPremisesReturnedModal, setOpenDamageToPremisesReturnedModal] = useState(false);
 
     const [formData, setFormData] = useState({
-        content: "",
-        propertyEnhancement: "",
-        equipmentBreakdown: "",
-        nonOwnedAuto: "Select Coverage",
+        // content: "",
+        // propertyEnhancement: "",
+        // equipmentBreakdown: "",
+        // nonOwnedAuto: "Select Coverage",
         propertyInTransit: "",
-        damageToPremisesReturned: "Select Coverage",
+        // damageToPremisesReturned: "Select Coverage",
     })
 
     return (
@@ -101,8 +114,8 @@ const Form5 = () => {
                         <div className="flex-grow text-[22px] ">Contents:</div>
                         <div className='flex gap-10 flex items-center justify-start'>
                             <div className='flex items-center justify-space-between form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal'>
-                                <p className='w-[95%] text-accents-500 accent-[#683039] text-[18px] font-normal'>{formData.content ? "$" + formData.content : "Select Coverage"}</p>
-                                <div className={`w-[20px] h-[20px] cursor-pointer ${formData.content !== "" ? 'bg-red-950' : 'border'}`} onClick={() => setOpenContentsModal(true)} />
+                                <p className='w-[95%] text-accents-500 accent-[#683039] text-[18px] font-normal'>{contents ? "$" + contents : "Select Coverage"}</p>
+                                <div className={`w-[20px] h-[20px] cursor-pointer ${contents !== "" ? 'bg-red-950' : 'border'}`} onClick={() => setOpenContentsModal(true)} />
                             </div>
                         </div>
                     </div>
@@ -113,11 +126,13 @@ const Form5 = () => {
                         <div className="flex-grow text-[22px] ">Property Enhancement:</div>
                         <div className='flex gap-10 flex items-center justify-start'>
                             <div className='flex items-center justify-space-between form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal'>
-                                <p className='w-[95%] text-accents-500 accent-[#683039] text-[18px] font-normal'>{formData.propertyEnhancement ? formData.propertyEnhancement : "Select Coverage"}</p>
-                                <div className={`w-[20px] h-[20px] cursor-pointer ${formData.propertyEnhancement !== "" ? 'bg-red-950' : 'border'}`} onClick={() => {
+                                <p className='w-[95%] text-accents-500 accent-[#683039] text-[18px] font-normal'>{propertyEnhancement ? propertyEnhancement : "Select Coverage"}</p>
+                                <div className={`w-[20px] h-[20px] cursor-pointer ${propertyEnhancement !== "" ? 'bg-red-950' : 'border'}`} onClick={() => {
                                     // setOpenPropertyEnhancementModal(true)
-                                    if (!formData.propertyEnhancement) setFormData({ ...formData, propertyEnhancement: "Included" })
-                                    else setFormData({ ...formData, propertyEnhancement: "" })
+                                    // if (!formData.propertyEnhancement) setFormData({ ...formData, propertyEnhancement: "Included" })
+                                    // else setFormData({ ...formData, propertyEnhancement: "" })
+                                    if (!propertyEnhancement) setPropertyEnhancement("Included")
+                                    else setPropertyEnhancement("")
                                 }} />
                             </div>
                         </div>
@@ -129,11 +144,13 @@ const Form5 = () => {
                         <div className="flex-grow text-[22px] ">Equipment Breakdown:</div>
                         <div className='flex gap-10 flex items-center justify-start'>
                             <div className='flex items-center justify-space-between form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal'>
-                                <p className='w-[95%] text-accents-500 accent-[#683039] text-[18px] font-normal'>{formData.equipmentBreakdown ? formData.equipmentBreakdown : "Select Coverage"}</p>
-                                <div className={`w-[20px] h-[20px] cursor-pointer ${formData.equipmentBreakdown !== "" ? 'bg-red-950' : 'border'}`} onClick={() => {
+                                <p className='w-[95%] text-accents-500 accent-[#683039] text-[18px] font-normal'>{equipmentBreakdown ? equipmentBreakdown : "Select Coverage"}</p>
+                                <div className={`w-[20px] h-[20px] cursor-pointer ${equipmentBreakdown !== "" ? 'bg-red-950' : 'border'}`} onClick={() => {
                                     // setOpenEquipmentBreakdownModal(true)
-                                    if (!formData.equipmentBreakdown) setFormData({ ...formData, equipmentBreakdown: "Included" })
-                                    else setFormData({ ...formData, equipmentBreakdown: "" })
+                                    // if (!formData.equipmentBreakdown) setFormData({ ...formData, equipmentBreakdown: "Included" })
+                                    // else setFormData({ ...formData, equipmentBreakdown: "" })
+                                    if (!equipmentBreakdown) setEquipmentBreakdown("Included")
+                                    else setEquipmentBreakdown("")
                                 }} />
                             </div>
                         </div>
@@ -145,8 +162,8 @@ const Form5 = () => {
                         <div className="flex-grow text-[22px] ">Hired/Non-Owned Auto:</div>
                         <div className='flex gap-10 flex items-center justify-start'>
                             <div className='flex items-center justify-space-between form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal'>
-                                <p className='w-[95%] text-accents-500 accent-[#683039] text-[18px] font-normal'>{formData.nonOwnedAuto}</p>
-                                <div className={`w-[20px] h-[20px] cursor-pointer ${formData.nonOwnedAuto !== "Select Coverage" ? 'bg-red-950' : 'border'}`} onClick={() => setOpenNonOwnedAutoModal(true)} />
+                                <p className='w-[95%] text-accents-500 accent-[#683039] text-[18px] font-normal'>{nonOwnedAuto?nonOwnedAuto:"Select Coverage"}</p>
+                                <div className={`w-[20px] h-[20px] cursor-pointer ${nonOwnedAuto !== "" ? 'bg-red-950' : 'border'}`} onClick={() => setOpenNonOwnedAutoModal(true)} />
                             </div>
                         </div>
                     </div>
@@ -169,8 +186,8 @@ const Form5 = () => {
                         <div className="flex-grow text-[22px] ">Damage to premises Retned to You($100,000 included in Base):</div>
                         <div className='flex gap-10 flex items-center justify-start'>
                             <div className='flex items-center justify-space-between form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal'>
-                                <p className='w-[95%] text-accents-500 accent-[#683039] text-[18px] font-normal'>{formData.damageToPremisesReturned}</p>
-                                <div className={`w-[20px] h-[20px] cursor-pointer ${formData.damageToPremisesReturned !== "Select Coverage" ? 'bg-red-950' : 'border'}`} onClick={() => setOpenDamageToPremisesReturnedModal(true)} />
+                                <p className='w-[95%] text-accents-500 accent-[#683039] text-[18px] font-normal'>{damageToRentedProperty?damageToRentedProperty:"Select Coverage"}</p>
+                                <div className={`w-[20px] h-[20px] cursor-pointer ${damageToRentedProperty !== "" ? 'bg-red-950' : 'border'}`} onClick={() => setOpenDamageToPremisesReturnedModal(true)} />
                             </div>
                         </div>
                     </div>
@@ -193,8 +210,8 @@ const Form5 = () => {
                             <input
                                 type='text'
                                 className={`form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
-                                value={formData.content ? "$" + formatToAmount(formData.content) : ""}
-                                onChange={(e) => setFormData({ ...formData, content: `${e.target.value}`.replace('$', "") })}
+                                value={contents ? "$" + formatToAmount(contents) : ""}
+                                onChange={(e) => setContents(`${e.target.value}`.replace('$', ""))}
                                 placeholder='$0'
                             />
                         </div>
@@ -216,8 +233,8 @@ const Form5 = () => {
                             <input
                                 type='text'
                                 className={`form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
-                                value={formData.propertyEnhancement}
-                                onChange={(e) => setFormData({ ...formData, propertyEnhancement: e.target.value })}
+                                value={propertyEnhancement}
+                                onChange={(e) => setPropertyEnhancement( e.target.value )}
                                 placeholder='Included'
                             />
                         </div>
@@ -239,8 +256,8 @@ const Form5 = () => {
                             <input
                                 type='text'
                                 className={`form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
-                                value={formData.equipmentBreakdown}
-                                onChange={(e) => setFormData({ ...formData, equipmentBreakdown: e.target.value })}
+                                value={equipmentBreakdown}
+                                onChange={(e) => setEquipmentBreakdown(e.target.value)}
                                 placeholder='Included'
                             />
                         </div>
@@ -261,12 +278,12 @@ const Form5 = () => {
                         <div className='flex gap-10 flex items-center justify-start'>
                             <select
                                 className={`form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
-                                value={formData.nonOwnedAuto}
-                                onChange={(e) => setFormData({ ...formData, nonOwnedAuto: e.target.value })}
+                                value={nonOwnedAuto}
+                                onChange={(e) => setNonOwnedAuto(e.target.value )}
                                 placeholder='Non-Owned Only'
                             >
                                 {
-                                    [<option value={"Select Coverage"} key={"default-option-0"} disabled>{"Select"}</option>, ...['Non-Owned Only', 'Hired & Non-Owned']?.map((value, i) => {
+                                    [<option value={""} key={"default-option-0"} disabled>{"Select"}</option>, ...['Non-Owned Only', 'Hired & Non-Owned']?.map((value, i) => {
                                         return (
                                             <option key={i} value={value}>{value}</option>
                                         )
@@ -311,16 +328,16 @@ const Form5 = () => {
                     <div className="flex-grow text-[22px] font-bold m-[20px auto]">{"What type of insurance coverage do you want?"}</div>
 
                     <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 my-2">
-                        <div className="flex-grow text-[22px]">Damage to premises Retned to You($100,000 included in Base):</div>
+                        <div className="flex-grow text-[22px] max-w-[300px]">Damage to premises Retned to You($100,000 included in Base):</div>
                         <div className='flex gap-10 flex items-center justify-start'>
                             <select
                                 className={`form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
-                                value={formData.damageToPremisesReturned}
-                                onChange={(e) => setFormData({ ...formData, damageToPremisesReturned: e.target.value })}
+                                value={damageToRentedProperty}
+                                onChange={(e) => setDamageToRentedProperty( e.target.value )}
                                 placeholder='$300,000'
                             >
                                 {
-                                    [<option value={"Select Coverage"} key={"default-option-0"} disabled>{"Select"}</option>, ...['$300,000', '$500,000']?.map((value, i) => {
+                                    [<option value={""} key={"default-option-0"} disabled>{"Select"}</option>, ...['$300,000', '$500,000']?.map((value, i) => {
                                         return (
                                             <option key={i} value={value}>{value}</option>
                                         )

@@ -34,8 +34,8 @@ const Form1 = () => {
                         </div>
                     </div>
                     <div className="w-1 bg-black mx-10 bg-black-900"></div>
-                    <div className='flex flex-col gap-10 mt-[35px] w-full sm:w-auto sm:mt-auto '>
-                        <p className='text-[20px] font-bold text-center'>{"Customer Details"}</p>
+                    <div className='flex flex-col gap-10 mt-[35px] w-full sm:w-auto sm:mt-[0px] '>
+                        <p className='text-[20px] font-bold p-[0px] m-[0px]'>{"Customer Details"}</p>
                         <div className="sm:grid grid-cols-2 gap-4">
                             <div className="flex flex-col space-y-[35px]">
                                 <input
@@ -117,7 +117,7 @@ const Form1 = () => {
                         id="acceptTerms"
                     />
                     <span className="text-black font-mulish text-xl font-semibold">
-                        {"I accept CannaPak's terms and conditions."}
+                        {"I accept CannaPak's "}<a href='#' className='underline'>{"terms and conditions."}</a>
                     </span>
                 </label>
             </div>
