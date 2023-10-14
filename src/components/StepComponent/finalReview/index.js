@@ -137,7 +137,7 @@ const FinalReview = () => {
                             </tfoot>
                         </table>
                     </div>
-                    <div className='border-t-2 sm:border-l-2 border-black flex flex-col p-8 gap-10'>
+                    <div className='border-t-2 sm:border-t-0 sm:border-l-2 border-black flex flex-col p-8 gap-10'>
                         <p className='text-[]18px] text-black font-bold'>{"Liability Premium Adjustable at a Rate of $ per $1,000 of sales State Premium Tax:Inspection Fee:MGA Fee:Total Premium:"}</p>
                         <div>
                             <img className='cursor-pointer' src='/icons/gg_check-r.png' width={50} height={50} alt='sxs' />

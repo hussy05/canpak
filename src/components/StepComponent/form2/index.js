@@ -15,11 +15,11 @@ const data = [
     },
     {
         text: 'What type of reporting fire alarm does the building have?',
-        options: ["Select","Central Station", "Non Station", "Station"]
+        options: ["Select","Central Station", "Local Reporting", "None"]
     },
     {
         text: 'What type of burglar alarm does the building have?',
-        options: ["Select","Central Station", "Non Station", "Station"]
+        options: ["Select","Central None", "Local Reporting", "Station"]
 
     },
     // {
@@ -56,7 +56,7 @@ const Form2 = () => {
         >
             <div>
                 <p className='text-[35px] font-bold text-center'>{"Your Property Details"}</p>
-                <div className='mt-5'>
+                <div className='mt-8'>
                     {rowData.map((row, rowIndex) => (
                         <div key={rowIndex} className="sm:grid grid-cols-2 flex flex-col sm:flex-row gap-2 sm:gap-10 my-[25px] sm:my-auto">
                             <div className="w-full sm:w-auto sm:flex-grow sm:text-[22px]">{row.text}</div>
@@ -115,9 +115,9 @@ const Form2 = () => {
                             <input
                                 type='text'
                                 className={`appearance-none form-select-gray border-gray-300 border p-3 w-full sm:w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
-                                value={selectedValue[5]?"$"+formatToAmount(selectedValue[5]):""}
+                                value={selectedValue[5]?formatToAmount(selectedValue[5]):""}
                                 onChange={(e) => handleValueChange( 5,`${e.target.value}`.replace("$","") )}
-                                placeholder='$0'
+                                placeholder='0'
                             />
                         </div>
                     </div>
@@ -127,9 +127,9 @@ const Form2 = () => {
                             <input
                                 type='text'
                                 className={`appearance-none form-select-gray border-gray-300 border p-3 w-full sm:w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
-                                value={selectedValue[6]?"$"+formatToAmount(selectedValue[6]):""}
+                                value={selectedValue[6]?formatToAmount(selectedValue[6]):""}
                                 onChange={(e) => handleValueChange( 6,`${e.target.value}`.replace("$","") )}
-                                placeholder='$0'
+                                placeholder='0'
                             />
                         </div>
                     </div>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const Form1 = () => {
-    const [locationsCount,setLocationsCount] = useState(1);
+    const [locationsCount, setLocationsCount] = useState(1);
     return (
         <div
             className="h-full w-full bg-white"
@@ -9,28 +9,30 @@ const Form1 = () => {
             <div>
                 <p className='text-[35px] font-bold text-center'>{"Insured Details to start a Quote"}</p>
                 <div className="flex flex-wrap sm:ml-20 mt-10 ">
-                    <div className="flex flex-col gap-10 mt-[35px] w-full sm:w-auto sm:mt-auto">
+                    <div className="flex flex-col gap-10 mt-[35px] w-full sm:w-auto sm:mt-[0px]">
                         <p className='text-[20px] font-bold'>{"Agent Details"}</p>
-                        <div className="relative">
-                            <input
-                                className="border border-black px-4 py-2 w-full sm:w-[300px]"
-                                type="text"
-                                placeholder="Agent Name and Agency"
-                            />
-                        </div>
-                        <div className="relative">
-                            <input
-                                className="border border-black px-4 py-2 w-full sm:w-[300px]"
-                                type="text"
-                                placeholder="Agent Phone"
-                            />
-                        </div>
-                        <div className="relative">
-                            <input
-                                className="border border-black px-4 py-2 w-full sm:w-[300px]"
-                                type="text"
-                                placeholder="Agent E-mail"
-                            />
+                        <div className='flex flex-col space-y-[35px]'>
+                            <div className="relative">
+                                <input
+                                    className="border border-black px-4 py-2 w-full sm:w-[300px]"
+                                    type="text"
+                                    placeholder="Agent Name and Agency"
+                                />
+                            </div>
+                            <div className="relative">
+                                <input
+                                    className="border border-black px-4 py-2 w-full sm:w-[300px]"
+                                    type="text"
+                                    placeholder="Agent Phone"
+                                />
+                            </div>
+                            <div className="relative">
+                                <input
+                                    className="border border-black px-4 py-2 w-full sm:w-[300px]"
+                                    type="text"
+                                    placeholder="Agent E-mail"
+                                />
+                            </div>
                         </div>
                     </div>
                     <div className="w-1 bg-black mx-10 bg-black-900"></div>
@@ -48,16 +50,16 @@ const Form1 = () => {
                                     type="text"
                                     placeholder="1223 Tadsworth Terr"
                                 />
-                                    <div className="w-full sm:w-[300px] relative">
-                                {
-                                Array.from(Array(locationsCount)).map((c,idx)=>(<input
-                                key={c}
-                                    className={`${idx > 0 && 'my-2'} border border-black px-4 py-2 w-full sm:w-[300px]`}
-                                    type="text"
-                                    placeholder={`${idx === 0 ?"Add Location":"Add another Location"}`}
-                                />))
-                                }
-                                <div className='flex justify-center items-center border rounded-full h-[38px] w-[38px] p-4 font-bold bg-red-950 absolute top-[2px] right-[2px] text-white align-middle text-center cursor-pointer' onClick={() => setLocationsCount(locationsCount+1)}>+</div>
+                                <div className="w-full sm:w-[300px] relative">
+                                    {
+                                        Array.from(Array(locationsCount)).map((c, idx) => (<input
+                                            key={c}
+                                            className={`${idx > 0 && 'my-2'} border border-black px-4 py-2 w-full sm:w-[300px]`}
+                                            type="text"
+                                            placeholder={`${idx === 0 ? "Add Location" : "Add another Location"}`}
+                                        />))
+                                    }
+                                    <div className='flex justify-center items-center border rounded-full h-[38px] w-[38px] p-4 font-bold bg-red-950 absolute top-[2px] right-[2px] text-white align-middle text-center cursor-pointer' onClick={() => setLocationsCount(locationsCount + 1)}>+</div>
                                 </div>
                             </div>
                             <div className="flex flex-col space-y-[35px] mt-[35px] sm:mt-auto">

@@ -52,14 +52,14 @@ const StepComponent = () => {
     };
 
     const valueNextStep = () => {
-            setValue(value + 1);
+        setValue(value + 1);
     };
     return (
         <div
             className="mt-2 relative min-h-[85vh] bg-white  mx-auto max-w-screen-sm md:max-w-screen-xl p-5"
         >
             <Link href={"/"}>
-            <img src='/icons/cross-icon.svg' width={40} height={40} className='float-right' />
+                <img src='/icons/cross-icon.svg' width={40} height={40} className='float-right' />
             </Link>
 
             <div className={`${currentStep >= 7 && "hidden"} mt-20 float-right`}>{renderSteps()}</div>
@@ -72,18 +72,18 @@ const StepComponent = () => {
                                 currentStep === 3 ? <Form3 /> :
                                     currentStep === 4 ? <Form4 /> :
                                         currentStep === 5 ? <Form5 /> :
-                                        currentStep === 6 ? <Form6 /> :null
-                                            
+                                            currentStep === 6 ? <Form6 /> : null
+
                     }
                     {
                         value === 1 ? <FinalReview /> :
-                        value === 2 ? <ThankYou /> : null
+                            value === 2 ? <ThankYou /> : null
                     }
                 </div>
                 <div className={`${value >= 2 && "hidden"} flex items-center justify-center`}>
                     <button
-                        onClick={()=> {
-                            if(currentStep >= 6){
+                        onClick={() => {
+                            if (currentStep >= 6) {
                                 setCurrentStep(7)
                                 valueNextStep()
                             } else {
@@ -100,6 +100,14 @@ const StepComponent = () => {
                         />
                     </button>
                 </div>
+                {
+                    currentStep === 2 ? <>
+                        <span className="text-black font-mulish text-xl font-semibold my-[10px] text-center">
+                            {"By Clicking Next Applicant Verifies "}<a href='#' className='underline'>{"Underwriting Information"}</a>{" is accurate."}
+                        </span>
+                    </> : currentStep === 6 ? <><span className="text-black font-mulish text-xl font-semibold my-[10px] text-center">
+                        {"Final Step Before Quote is Presented"}</span></> : null
+                }
 
             </div>
 

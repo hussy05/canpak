@@ -317,7 +317,7 @@ const Form6 = () => {
                         <div className="flex-grow text-[22px]">Additional Insured:</div>
                         <div className='flex gap-10 flex items-center justify-start'>
                             <select
-                                className={`form-select-gray border-gray-300 border p-3 w-full h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
+                                className={`form-select-gray border-gray-300 border p-3 w-[400px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
                                 value={formData.additionalInsured}
                                 onChange={(e) => setFormData({ ...formData, additionalInsured: e.target.value })}
                                 placeholder='Additional Insured Povision (Scheduled Primary And Non-Contributory)'
