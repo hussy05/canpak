@@ -117,7 +117,7 @@ const Form2 = () => {
                                 className={`appearance-none form-select-gray border-gray-300 border p-3 w-full sm:w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
                                 value={selectedValue[5]?formatToAmount(selectedValue[5]):""}
                                 onChange={(e) => handleValueChange( 5,`${e.target.value}`.replace("$","") )}
-                                placeholder='0'
+                                placeholder='Year as four-digit number, e.g. 2015'
                             />
                         </div>
                     </div>
