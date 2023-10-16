@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 
 const dummyData = [
     {
-        heading: 'Coverages',
+        // heading: 'Coverages',
         heading: 'Premium',
         items: ['Building', 'Contents', 'Business Income', 'Property Enhancement', 'Equipment Breakdown', "Tenant's Glass", 'Ordinance & Law', 'Premises', 'Products', 'Stop Gap', 'Damage to Premises Rented To You', 'Hired/Non-Owned Auto', 'Employee Benefits Liability'],
     },
@@ -36,7 +36,7 @@ const FinalReview = () => {
     } = useContext(QuouteFormData);
     return (
         <div
-            className="h-full w-full bg-white sm:p-10"
+            className="h-full w-full bg-white pt-0 sm:p-10"
         >
             <div>
                 <p className='text-[35px] font-bold text-center'>{"Final Quoted Provisional Premium"}</p>

@@ -8,7 +8,7 @@ const Form7 = () => {
 
     return (
         <div
-            className="h-full w-full bg-white p-10 h-[88vh]"
+            className="h-full w-full bg-white pt-0	p-10 h-[88vh]"
         >
             <div>
                 <p className='text-[35px] font-bold text-center'>{"Additional Insured"}</p>

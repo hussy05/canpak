@@ -52,15 +52,15 @@ const Form2 = () => {
 
     return (
         <div
-            className="h-full w-full bg-white p-10"
+            className="h-full w-full bg-white pt-0	 p-10"
         >
             <div>
                 <p className='text-[35px] font-bold text-center'>{"Your Property Details"}</p>
                 <div className='mt-8'>
                     {rowData.map((row, rowIndex) => (
                         <div key={rowIndex} className="sm:grid grid-cols-2 flex flex-col sm:flex-row gap-2 sm:gap-10 my-[25px] sm:my-auto">
-                            <div className="w-full sm:w-auto sm:flex-grow sm:text-[22px]">{row.text}</div>
-                            <div className='flex gap-5 sm:gap-10 flex items-center justify-center'>
+                            <div className="w-full sm:w-auto sm:flex-grow sm:text-[22px] mt-5">{row.text}</div>
+                            <div className='flex gap-5 sm:gap-10 flex items-center justify-center mt-5'>
                                 <label className="inline-flex items-center">
                                     <input
                                         type="radio"
@@ -90,8 +90,8 @@ const Form2 = () => {
                 <div className='mt-2'>
                     {data.map((row, rowIndex) => (
                         <div key={rowIndex} className="flex flex-col sm:grid grid-cols-2 sm:gap-10 my-[25px] sm:my-auto">
-                            <div className="w-full sm:w-auto flex-grow sm:text-[22px]">{row.text}</div>
-                            <div className='flex gap-10 flex items-center justify-center'>
+                            <div className="w-full sm:w-auto flex-grow sm:text-[22px] mt-5">{row.text}</div>
+                            <div className='flex gap-10 flex items-center justify-center mt-5'>
                                 <select
                                     className=" form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal"
                                     value={selectedValue[rowIndex] || row?.options[0]}
@@ -110,20 +110,20 @@ const Form2 = () => {
                         </div>
                     ))}
                     <div className="flex flex-col sm:grid grid-cols-2 sm:gap-10 my-2">
-                        <div className="w-full sm:w-auto sm:flex-grow sm:text-[22px] ">Year Built of the Building:</div>
-                        <div className='flex gap-10 flex items-center justify-center'>
+                        <div className="w-full sm:w-auto sm:flex-grow sm:text-[22px] mt-5 ">Year Built of the Building:</div>
+                        <div className='flex gap-10 flex items-center justify-center mt-5'>
                             <input
                                 type='text'
                                 className={`appearance-none form-select-gray border-gray-300 border p-3 w-full sm:w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
                                 value={selectedValue[5]?formatToAmount(selectedValue[5]):""}
                                 onChange={(e) => handleValueChange( 5,`${e.target.value}`.replace("$","") )}
-                                placeholder='Year as four-digit number, e.g. 2015'
+                                placeholder='Year,e.g. 2015'
                             />
                         </div>
                     </div>
                     <div className="flex flex-col sm:grid grid-cols-2 sm:gap-10 my-2">
-                        <div className="w-full sm:w-auto sm:flex-grow sm:text-[22px] ">Total Square Feet of the Building:</div>
-                        <div className='flex gap-10 flex items-center justify-center'>
+                        <div className="w-full sm:w-auto sm:flex-grow sm:text-[22px] mt-5 ">Total Square Feet of the Building:</div>
+                        <div className='flex gap-10 flex items-center justify-center mt-5'>
                             <input
                                 type='text'
                                 className={`appearance-none form-select-gray border-gray-300 border p-3 w-full sm:w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}

@@ -4,7 +4,7 @@ const Form1 = () => {
     const [locationsCount, setLocationsCount] = useState(1);
     return (
         <div
-            className="h-full w-full bg-white"
+            className="h-full w-full bg-white pt-0"
         >
             <div>
                 <p className='text-[35px] font-bold text-center'>{"Insured Details to start a Quote"}</p>

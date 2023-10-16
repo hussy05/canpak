@@ -82,7 +82,7 @@ const Form3 = () => {
 
     return (
         <div
-            className="h-full w-full bg-white p-10"
+            className="h-full w-full bg-white pt-0	p-10"
         >
             <div>
                 <p className='text-[35px] font-bold text-center'>{"Your Business Details"}</p>
@@ -155,8 +155,8 @@ const Form3 = () => {
                 </div>
                 <div>
                     <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 mt-2">
-                        <div className="flex-grow text-[22px]">{"THC, CBD or Hemp?"}</div>
-                        <div className='flex gap-10 flex items-center justify-center'>
+                        <div className="flex-grow text-[22px] mt-5">{"THC, CBD or Hemp?"}</div>
+                        <div className='flex gap-10 flex items-center justify-center mt-5'>
                             <select
                                 className={`form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
                                 value={formData.thcCbd}
@@ -171,8 +171,8 @@ const Form3 = () => {
                     </div>
 
                     <div className="grid grid-row-2 sm:grid-cols-2 flex gap-2 sm:gap-10 mt-2 pb-[5px]">
-                        <div className="flex-grow text-[22px]">{"Do You Own or Rent?"}</div>
-                        <div className='flex gap-10 flex items-center justify-center'>
+                        <div className="flex-grow text-[22px] mt-5">{"Do You Own or Rent?"}</div>
+                        <div className='flex gap-10 flex items-center justify-center mt-5'>
                             <label className="inline-flex items-center">
                                 <input
                                     type="radio"
@@ -199,8 +199,8 @@ const Form3 = () => {
                     </div>
 
                     <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 mt-2">
-                        <div className="flex-grow text-[22px]">{"How is the business registered?"}</div>
-                        <div className='flex gap-10 flex items-center justify-center'>
+                        <div className="flex-grow text-[22px] mt-5">{"How is the business registered?"}</div>
+                        <div className='flex gap-10 flex items-center justify-center mt-5'>
                             <select
                                 className={`form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
                                 value={formData.businessReistration}
@@ -219,8 +219,8 @@ const Form3 = () => {
                     </div>
 
                     <div className="grid grid-row-2 sm:grid-cols-2 flex gap-2 sm:gap-10 mt-2 pb-[5px]">
-                        <div className="flex-grow text-[22px]">{"Does the business have a website?"}</div>
-                        <div className='flex gap-10 flex items-center justify-center'>
+                        <div className="flex-grow text-[22px]  mt-5">{"Does the business have a website?"}</div>
+                        <div className='flex gap-10 flex items-center justify-center mt-5'>
                             <label className="inline-flex items-center">
                                 <input
                                     type="radio"
@@ -249,8 +249,8 @@ const Form3 = () => {
                         </div>
                     </div>
                     {formData.website === "yes" && <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 my-2">
-                        <div className="flex-grow text-[22px]">Website URL:</div>
-                        <div className='flex gap-10 flex items-center justify-center'>
+                        <div className="flex-grow text-[22px]  mt-5">Website URL:</div>
+                        <div className='flex gap-10 flex items-center justify-center  mt-5'>
                             <input
                                 type='text'
                                 className={`appearance-none form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
@@ -262,8 +262,8 @@ const Form3 = () => {
                     </div>}
 
                     <div className="grid grid-row-2 sm:grid-cols-2 flex gap-2 sm:gap-10 mt-2 pb-[5px]">
-                        <div className="flex-grow text-[22px]">{"Do you have a valid license from the state(s) you do business in?"}</div>
-                        <div className='flex gap-10 flex items-center justify-center'>
+                        <div className="flex-grow text-[22px]  mt-5">{"Do you have a valid license from the state(s) you do business in?"}</div>
+                        <div className='flex gap-10 flex items-center justify-center  mt-5'>
                             <label className="inline-flex items-center">
                                 <input
                                     type="radio"
@@ -291,8 +291,8 @@ const Form3 = () => {
                         </div>
                     </div>
                     {formData.license === "yes" && <div className="grid grid-row-2 sm:grid-cols-2 gap-2 sm:gap-10 my-2">
-                        <div className="flex-grow text-[22px]">Licenses#:</div>
-                        <div className='flex gap-10 flex items-center justify-center'>
+                        <div className="flex-grow text-[22px] mt-5">Licenses#:</div>
+                        <div className='flex gap-10 flex items-center justify-center mt-5'>
                             <input
                                 type='text'
                                 className={`appearance-none form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
@@ -317,7 +317,7 @@ const Form3 = () => {
                         <div className="flex-grow text-[22px]">Retailers:</div>
                         <div className='flex gap-10 flex items-center justify-start'>
                             <select
-                                className={`form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
+                                className={`form-select-gray border-gray-300 border p-3 w-[440px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
                                 value={formData.businessSubDetail}
                                 onChange={(e) => setFormData({ ...formData, businessSubDetail: e.target.value })}
                                 placeholder='Buildings or Premises - Office - Other than not-for-profit'
@@ -359,7 +359,7 @@ const Form3 = () => {
                         <div className="flex-grow text-[22px]">Cultivators/ Growers:</div>
                         <div className='flex gap-10 flex items-center justify-start'>
                             <select
-                                className={`form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
+                                className={`form-select-gray border-gray-300 border p-3 w-[440px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
                                 value={formData.businessSubDetail}
                                 onChange={(e) => setFormData({ ...formData, businessSubDetail: e.target.value })}
                                 placeholder='Buildings or Premises - Office - Other than not-for-profit'
@@ -398,7 +398,7 @@ const Form3 = () => {
                         <div className="flex-grow text-[22px]">Processors\Manufacturer:</div>
                         <div className='flex gap-10 flex items-center justify-start'>
                             <select
-                                className={`form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
+                                className={`form-select-gray border-gray-300 border p-3 w-[440px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
                                 value={formData.businessSubDetail}
                                 onChange={(e) => setFormData({ ...formData, businessSubDetail: e.target.value })}
                                 placeholder='Buildings or Premises - Office - Other than not-for-profit'
@@ -441,7 +441,7 @@ const Form3 = () => {
                         <div className="flex-grow text-[22px]">Distributors & Transporters:</div>
                         <div className='flex gap-10 flex items-center justify-start'>
                             <select
-                                className={`form-select-gray border-gray-300 border p-3 w-[240px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
+                                className={`form-select-gray border-gray-300 border p-3 w-[440px] h-[50px] text-accents-500 accent-[#683039] text-[18px] font-normal`}
                                 value={formData.businessSubDetail}
                                 onChange={(e) => setFormData({ ...formData, businessSubDetail: e.target.value })}
                                 placeholder='Buildings or Premises - Office - Other than not-for-profit'

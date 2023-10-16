@@ -5,7 +5,7 @@ const ThankYou = () => {
 
     return (
         <div
-            className="h-full w-full bg-white p-10"
+            className="h-full w-full bg-white pt-0 p-10"
         >
             <div>
                 <p className='text-[35px] font-bold text-center'>{"Thank you for Submitting your Quote."}</p>
